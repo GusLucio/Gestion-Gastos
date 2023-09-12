@@ -2,6 +2,7 @@
 Proyecto de Gustavo Lucio para la aplicación a WelcomeStays
 
 Este proyecto tiene como dependencias:
+- Node.js
 - Express
 - NeDB
 
