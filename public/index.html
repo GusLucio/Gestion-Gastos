@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script type = "text/javascript" src="index.js"></script>  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <title>Gestion Gastos</title>
+</head>
+<body>
+    <div class="d-flex flex-row">
+        <!-- Side Bar Menu -->
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 25vh; height: 100vh;">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                <span class="fs-4">Expense Management</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link active" aria-current="page">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="addexpense.html" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                        Add Expense
+                    </a>
+                </li>
+                <li>
+                    <a href="addIncome.html" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                        Add Income
+                    </a>
+                </li>
+                <li>
+                    <a href="monthlyReport.html" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                        Report
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="jumbotron mt-4 d-flex flex-column mx-auto">
+            <h1 class="display-4">Hello Gustavo!</h1>
+            <p class="lead">Make sure to register your daily expenses and track your savings!</p>
+            <hr class="my-4">
+            <div>
+                <span>You've registered </span>
+                <span id="numExp"></span>
+                <span>expenses.</span>
+            </div>
+            <script> 
+            getData();
+            async function getData(){
+                const response = await fetch('/api');
+                const data = await response.json();
+                console.log(data);
+                document.getElementById('numExp').textContent = data;
+            }
+            </script>
+          </div>
+        
+    </div>
+
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
